@@ -1,4 +1,8 @@
-import { NativeModules, DeviceEventEmitter, EmitterSubscription } from 'react-native';
+import {
+  NativeModules,
+  DeviceEventEmitter,
+  EmitterSubscription,
+} from "react-native";
 
 export type ScannerInfo = {
   name: string;
@@ -10,9 +14,9 @@ export type ScannerInfo = {
   scanEngineVersionNumber: string;
   frameWidth: number;
   frameHeight: number;
-}
+};
 export type BarcodeReadSuccessEvent = {
-  (event: BarcodeReadSuccessResult): void
+  (event: BarcodeReadSuccessResult): void;
 };
 export type BarcodeReadSuccessResult = {
   data: string;
@@ -21,7 +25,7 @@ export type BarcodeReadSuccessResult = {
   aimid: string;
   timestamp: string;
   symbology: string;
-}
+};
 export type HoneywellBarcodeReader = {
   BARCODE_READ_SUCCESS: string;
   BARCODE_READ_FAIL: string;
@@ -38,38 +42,48 @@ export type HoneywellBarcodeReader = {
   offBarcodeReadFail(): void;
   onTriggerStateChange(handler: (state: boolean) => void): void;
   offTriggerStateChange(): void;
-}
+};
 
-let subscriptionBarcodeReadSuccess: EmitterSubscription | null = null
-let subscriptionBarcodeReadFail: EmitterSubscription | null = null
-let subscriptionTriggerState: EmitterSubscription | null = null
-const barcodeReader: HoneywellBarcodeReader = NativeModules.HoneywellBarcodeReader || {}
+let subscriptionBarcodeReadSuccess: EmitterSubscription | null = null;
+let subscriptionBarcodeReadFail: EmitterSubscription | null = null;
+let subscriptionTriggerState: EmitterSubscription | null = null;
+const barcodeReader: HoneywellBarcodeReader =
+  NativeModules.HoneywellBarcodeReader || {};
 
 barcodeReader.onBarcodeReadSuccess = (handler) => {
-  subscriptionBarcodeReadSuccess?.remove()
-  subscriptionBarcodeReadSuccess = DeviceEventEmitter.addListener(barcodeReader.BARCODE_READ_SUCCESS, handler)
-}
+  subscriptionBarcodeReadSuccess?.remove();
+  subscriptionBarcodeReadSuccess = DeviceEventEmitter.addListener(
+    barcodeReader.BARCODE_READ_SUCCESS,
+    handler
+  );
+};
 
 barcodeReader.offBarcodeReadSuccess = () => {
-  subscriptionBarcodeReadSuccess?.remove()
-}
+  subscriptionBarcodeReadSuccess?.remove();
+};
 
 barcodeReader.onBarcodeReadFail = (handler) => {
-  subscriptionBarcodeReadFail?.remove()
-  subscriptionBarcodeReadFail = DeviceEventEmitter.addListener(barcodeReader.BARCODE_READ_FAIL, handler)
-}
+  subscriptionBarcodeReadFail?.remove();
+  subscriptionBarcodeReadFail = DeviceEventEmitter.addListener(
+    barcodeReader.BARCODE_READ_FAIL,
+    handler
+  );
+};
 
 barcodeReader.offBarcodeReadFail = () => {
-  subscriptionBarcodeReadFail?.remove()
-}
+  subscriptionBarcodeReadFail?.remove();
+};
 
 barcodeReader.onTriggerStateChange = (handler) => {
-  subscriptionTriggerState?.remove()
-  subscriptionTriggerState = DeviceEventEmitter.addListener(barcodeReader.BARCODE_TRIGGER_STATE, handler)
-}
+  subscriptionTriggerState?.remove();
+  subscriptionTriggerState = DeviceEventEmitter.addListener(
+    barcodeReader.BARCODE_TRIGGER_STATE,
+    handler
+  );
+};
 
 barcodeReader.offTriggerStateChange = () => {
-  subscriptionTriggerState?.remove()
-}
+  subscriptionTriggerState?.remove();
+};
 
 export default barcodeReader;
