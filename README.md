@@ -26,6 +26,12 @@ HoneywellBarcodeReader.register().then((claimed) => {
 });
 ```
 
+Enable automation the barcode scanner:
+
+```js
+HoneywellBarcodeReader.automatic()
+```
+
 To get events from the barcode scanner:
 
 ```js
