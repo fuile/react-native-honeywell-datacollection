@@ -1,0 +1,33 @@
+{
+  "name": "react-native-honeywell-datacollection",
+  "description": "A data collection for Honeywell handheld devices like Honeywell EDA50K (tested)",
+  "version": "1.0.0",
+  "author": "Jared.Yan<yanhuaiwen@163.com>",
+  "main": "index.ts",
+  "files": [
+    "android",
+    "index.ts"
+  ],
+  "keywords": [
+    "react",
+    "react-native",
+    "android",
+    "honeywell",
+    "datacollection",
+    "barcode",
+    "reader",
+    "trigger"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/fuile/react-native-honeywell-datacollection",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fuile/react-native-honeywell-datacollection"
+  },
+  "engines": {
+    "node": ">=4.0"
+  },
+  "devDependencies": {
+    "react-native": "0.71.6"
+  }
+}
