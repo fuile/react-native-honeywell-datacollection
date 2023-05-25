@@ -1,7 +1,7 @@
 {
   "name": "react-native-honeywell-datacollection",
   "description": "A data collection for Honeywell handheld devices like Honeywell EDA50K (tested)",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Jared.Yan<yanhuaiwen@163.com>",
   "main": "index.ts",
   "files": [

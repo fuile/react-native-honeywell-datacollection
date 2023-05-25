@@ -19,7 +19,7 @@ public class BarcodeReaderListener implements BarcodeReader.BarcodeListener {
     @Override
     public void onBarcodeEvent(BarcodeReadEvent barcodeReadEvent) {
         WritableMap params = Arguments.createMap();
-        params.putString("data", barcodeReadEvent.getBarcodeData());
+        params.putString("data", new String(barcodeReadEvent.getBarcodeData().getBytes(barcodeReadEvent.getCharset()), StandardCharsets.UTF_8));
         params.putString("charset", barcodeReadEvent.getCharset().toString());
         params.putString("codeid", barcodeReadEvent.getCodeId());
         params.putString("aimid", barcodeReadEvent.getAimId());
